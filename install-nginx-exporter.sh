@@ -11,7 +11,7 @@ Description=nginx for Prometheus
 [Service]
 Restart=always
 User=root
-ExecStart=/usr/local/nginx-prometheus-exporter -nginx.scrape-uri ホスト/stub_status
+ExecStart=/usr/local/nginx-prometheus-exporter -nginx.scrape-uri http://localhost/stub_status
 ExecReload=/bin/kill -HUP $MAINPID
 TimeoutStopSec=20s
 SendSIGKILL=no
@@ -22,5 +22,5 @@ EOF
 
 systemctl enable nginx-prometheus-exporter.service
 systemctl start nginx-prometheus-exporter.service
-ufw allow 9113/tcp
+firewall-cmd --add-port=9113/tcp
 
