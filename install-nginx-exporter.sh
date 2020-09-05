@@ -22,5 +22,6 @@ EOF
 
 systemctl enable nginx-prometheus-exporter.service
 systemctl start nginx-prometheus-exporter.service
-firewall-cmd --add-port=9113/tcp
+firewall-cmd --add-port=9113/tcp --zone=public --permanent
+firewall-cmd --reload
 
